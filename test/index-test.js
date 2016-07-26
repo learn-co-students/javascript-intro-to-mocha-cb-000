@@ -13,13 +13,13 @@ describe('Intro to Mocha', function() {
 
   describe('sayHeyFriend()', function() {
     it('should return a greeting using the given name', function() {
-      expect(sayHeyFriend('Johnny')).toEqual('Hey, Johnny!!');
+      expect(sayHeyFriend('Johnny')).toEqual('Hey, Johnny!');
     });
   });
 
   describe('favoriteIceCream()', function() {
     it('should return the correct sentence when passed an icecream flavor', function() {
-      expect(favoriteIceCream('mint chocolate chip')).toEqual('I love mint chocolate chip.');
+      expect(favoriteIceCream('mint chocolate chip')).toEqual('I love mint chocolate chip');
     });
   });
 
