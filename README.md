@@ -34,24 +34,37 @@ makes our tests portable — that is, it makes it so that they can run just abou
 We set up our fake "browser" in a call to `before()`:
 
 ```javascript
-before(done => {
-  const src = path.resolve(__dirname, '..', 'code.js');
+global.expect = require('expect');
 
-  jsdom.env('<div></div>', [src], (err, window) => {
+const jsdom = require('jsdom');
+const path = require('path');
+
+before(function(done) {
+  const src = path.resolve(__dirname, '..', 'index.js');
+  const babelResult = require('babel-core').transformFileSync(src, {
+    presets: ['es2015']
+  });
+  const html = path.resolve(__dirname, '..', 'index.html');
+
+  jsdom.env(html, [], { src: babelResult.code }, (err, window) => {
     if (err) {
       return done(err);
     }
 
     Object.keys(window).forEach(key => {
-      global[key] = window[key]
+      global[key] = window[key];
     });
 
-    done();
+    return done();
   });
 });
 ```
 
 This looks a little intimidating, but don't worry, we'll walk you through it.
+
+The stuff at the top is all just setup — `require` is built into our test
+environment (running in Node.js; it **will not** work in your browser). Don't
+sweat it too much.
 
 The first thing to notice is `done`. The `before()`, `after()`, `beforeEach()` and `afterEach()`, as
 well as our test functions, can have an optional first argument. This argument is a function, and is
@@ -62,6 +75,10 @@ tests. Notice where we call `done()` inside of the callback that gets `err, wind
 Then we assign the location of the code we want to test to the variable `src` — pretty basic. (Don't
 worry too much about `path.resolve` — it's a part of the Node.js path library for determining the
 path of something. In this case, it's figuring out where `code.js` lives.)
+
+Then we compile our code. Don't worry too much about this — these days, it's not
+changing much — but know that this helps make our code run easily in multiple
+environments. It's pretty sweet.
 
 Then we call `jsdom.env()`. This function receives four arguments:
 
@@ -104,12 +121,25 @@ but we can make assertions about what it returns.
 
 ## The debugger
 
-Before you get started, make sure you run `learn` to see the test output in your terminal. Take
-each test step by step, and remember that you can use `debugger` if you get stuck.
+Before you get started, make sure you run `learn` to see the test output in your terminal. Take each
+test step by step, and remember that you can use `debugger` if you get stuck.
 
-For example, in our function `favoriteIceCream()`, you might want to see what the arguments look
-like. You can add a `debugger` statement like so:
+**Flat fact**: Running `learn` for a Mocha-based lab picks up on the script assigned to `npm test`.
+That means to run our tests more quickly, we can also simply run `npm test`. And if we'd like to pass options to Mocha — say,
+for instance, that we'd like to stop running tests after the first failure — we can pass an option
+like `npm test -- --bail`. The `--` is necessary so that the `npm` passes the `--bail` option to
+the right process (in this case, to `mocha` (which is in the `test` script) and not `npm` itself).
+If we'd like to avoid passing arguments at the command line, we can also add them to a `mocha.opts`
+file in the `test/` directory. For example,
 
+```
+--bail
+```
+
+in `mocha.opts` will use the dot reporter and the bail option.
+
+In our function `favoriteIceCream()`, you might want to see what the arguments
+look like. You can add a `debugger` statement like so:
 ```javascript
 function favoriteIceCream(flavor) {
   debugger
@@ -119,6 +149,39 @@ function favoriteIceCream(flavor) {
 Then, if you open up `index.html` in your browser (if you're using the IDE, simply right click on
 the file and select "Open in browser") and call `favoriteIceCream('chocolate')` in the browser's
 terminal, you can inspect the `flavor` argument simply by hovering over it. Pretty cool, right?
+
+### Debugging with the browser
+
+eou can also use `test/index-test.html` to use the browser-based debugger while
+running the tests. (**NOTE**: We'll need to have our console open for the
+debugger's break points to be triggered.) We'll still need to submit tests
+with `learn`, but this way we can get instant feedback.
+
+For example, when we open `test/index-html`, we'll see
+
+![all tests](https://curriculum-content.s3.amazonaws.com/skills-based-js/intro_to_mocha/intro_to_mocha_all_tests.png)
+
+And if we click on the first test we'll see
+
+![one test](https://curriculum-content.s3.amazonaws.com/skills-based-js/intro_to_mocha/intro_to_mocha_one_test.png)
+
+Then, if we start writing in `index.js`
+
+```javascript
+function favoriteIceCream(flavor) {
+  debugger
+}
+```
+
+Open the console, and refresh the page, we'll see
+
+![debugger](https://curriculum-content.s3.amazonaws.com/skills-based-js/intro_to_mocha/intro_to_mocha_debugger.png)
+
+Finally, once we pass the test, we'll see
+
+![test passing](https://curriculum-content.s3.amazonaws.com/skills-based-js/intro_to_mocha/intro_to_mocha_one_test_passing.png)
+
+At which point we go back to the all tests view and work on the next test.
 
 ### Debugging with node-inspector
 
