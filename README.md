@@ -64,9 +64,28 @@ The `expect` is calling the function `favoriteIceCream()` and passing in the par
 
 ## The debugger
 
-Before you get started, make sure you run `learn` to see the test output in your terminal. Take each test step by step, and remember that you can use `debugger` if you get stuck.
+Before you get started, make sure you run `learn` to see the test output in your
+terminal. Take each test step by step, and remember that you can use `debugger`
+if you get stuck.
 
-For example, in our function `favoriteIceCream()`, you might want to see what the arguments look like. You can add a `debugger` statement like so:
+**Flat fact**: Running `learn` for a Mocha-based lab picks up on the script
+assigned to `npm test`. That means to run our tests more quickly, we can
+also simply run `npm test`. And if we'd like to pass options to Mocha — say,
+for instance, that we'd like to stop running tests after the first failure —
+we can pass an option like `npm test -- --bail`. The `--` is necessary so that
+the `npm` passes the `--bail` option to the right process (in this case, to
+`mocha` (which is in the `test` script) and not `npm` itself). If we'd like to
+avoid passing arguments at the commend line, we can also add them to a
+`mocha.opts` file in the `test/` directory. For example,
+
+```
+--bail
+```
+
+in `mocha.opts` will use the dot reporter and the bail option.
+
+In our function `favoriteIceCream()`, you might want to see what the arguments
+look like. You can add a `debugger` statement like so:
 
 ```javascript
 function favoriteIceCream(flavor) {
