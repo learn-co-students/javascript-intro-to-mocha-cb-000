@@ -1,7 +1,7 @@
 describe('Intro to Mocha', function() {
   describe('favoriteIceCream()', function() {
     it('should return your favorite ice cream', function() {
-      expect(favoriteIceCream("mint chocolate chip")).toEqual("I love mint chocolate chip");
+      expect(favoriteIceCream("mint chocolate chip")).toEqual("I love mint chocolate chip.");
     });
   });
 
