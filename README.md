@@ -136,7 +136,7 @@ file in the `test/` directory. For example,
 --bail
 ```
 
-in `mocha.opts` will use the dot reporter and the bail option.
+in `mocha.opts` will use the bail option.
 
 In our function `favoriteIceCream()`, you might want to see what the arguments
 look like. You can add a `debugger` statement like so:
@@ -152,12 +152,15 @@ terminal, you can inspect the `flavor` argument simply by hovering over it. Pret
 
 ### Debugging with the browser
 
-eou can also use `test/index-test.html` to use the browser-based debugger while
+We can also use `index.html` to use the browser-based debugger while
 running the tests. (**NOTE**: We'll need to have our console open for the
 debugger's break points to be triggered.) We'll still need to submit tests
 with `learn`, but this way we can get instant feedback.
 
-For example, when we open `test/index-html`, we'll see
+For example, when we open `index.html`, we'll see — well, nothing at first. Open
+up the console (`command` + `shift` + `j` in macOS), and type `mocha.run()`. You
+will use this command to run tests in any lab that supports them in this file.
+Now you should see something like:
 
 ![all tests](https://curriculum-content.s3.amazonaws.com/skills-based-js/intro_to_mocha/intro_to_mocha_all_tests.png)
 
