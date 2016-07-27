@@ -2,8 +2,17 @@
 <html>
   <head>
     <title>Intro to Mocha</title>
+    <link rel="stylesheet" href="node_modules/mocha/mocha.css" />
   </head>
   <body>
-    <script src="code.js"></script>
+    <script src="index.js"></script>
+    <div id="mocha"></div>
+    <script src="node_modules/mocha/mocha.js"></script>
+    <script src="node_modules/expect/umd/expect.min.js"></script>
+    <script>mocha.setup('bdd');</script>
+    <script src="test/index-test.js"></script>
+    <script>
+      mocha.run();
+    </script>
   </body>
 </html>
