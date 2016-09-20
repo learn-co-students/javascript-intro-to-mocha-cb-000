@@ -1,4 +1,4 @@
-# Intro to Mocha
+# JavaScript Intro to Mocha
 
 ## Objectives
 
@@ -85,7 +85,7 @@ Then we call `jsdom.env()`. This function receives four arguments:
 1. An HTML string. This string sets up the DOM — it can be arbitrarily long (we could even read in
 a full HTML file), but in this case, we just need something basic, since our tests don't really use
 the DOM.
-2. An array of paths to source files. We only have on file to test, so it's the only element in the
+2. An array of paths to source files. We only have one file to test, so it's the only element in the
 array.
 3. A callback. This function, in typical Node.js fashion, receives an error first. The `err` will
 most likely be `null`, but if it's defined, we call `done(err)` to tell Mocha to stop and show us
@@ -112,11 +112,11 @@ The test above tests a function named `favoriteIceCream`. The `it` block declare
 the expectation being tested. In this case, we're testing that the function returns a sentence about
 the favorite ice cream. The `expect` block calls the function behind tests, and uses a matcher
 (in this case `toBe`) to test what the return value of the function should be. Note that we don't
-need to assign our result and expected result to a variable, we can also do this inline. We're doing
+need to assign our result and expected result to a variable; we could also do this in-line. We're doing
 it this way here to more easily showcase the `expect` syntax.
 
 The `expect` is calling the function `favoriteIceCream()` and passing in the parameter
-`'mint chocolate chip'` — it's just as if `favoriteIceCream()` were running in a "real" application,
+`'mint chocolate chip'`. It's just as if `favoriteIceCream()` were running in a "real" application,
 but we can make assertions about what it returns.
 
 ## The debugger
@@ -130,13 +130,7 @@ for instance, that we'd like to stop running tests after the first failure — w
 like `npm test -- --bail`. The `--` is necessary so that the `npm` passes the `--bail` option to
 the right process (in this case, to `mocha` (which is in the `test` script) and not `npm` itself).
 If we'd like to avoid passing arguments at the command line, we can also add them to a `mocha.opts`
-file in the `test/` directory. For example,
-
-```
---bail
-```
-
-in `mocha.opts` will use the bail option.
+file in the `test/` directory. For example, `--bail` in `mocha.opts` will use the bail option.
 
 In our function `favoriteIceCream()`, you might want to see what the arguments
 look like. You can add a `debugger` statement like so:
@@ -204,13 +198,13 @@ Chrome on your machine, and you can debug remotely.
 ## Instructions
 
 This lab is designed to get you comfortable with the syntax of Mocha as well as JavaScript. All you
-need to do to complete it is make all the tests pass in the `test/intro-test.js`.  You'll be coding
-your solution in `code.js`.
+need to do to complete it is make all the tests pass in the `test/index-test.js`.  You'll be coding
+your solution in `index.js`.
 
 1.  Write a function called `theTruth`, which returns the boolean `true`.
 2.  Write a function called `sayHey`, which returns the string `'Hey!'`.
 3.  Write a function called `sayHeyFriend`, that takes one argument (the name of the friend). The
- function returns the string `'Hey <FRIENDS_NAME>!'` (e.g. `'Hey, Johnny!'`).
+ function returns the string `'Hey <NAME>!'` (e.g., `'Hey, Johnny!'`).
 4. Write a function called `favoriteIceCream`, which accepts a parameter and returns the string
 `"I love <NAME_OF_ICECREAM>"`.
 5. Write a function called `shouting`, which accepts a string as a parameter and returns the string
@@ -221,3 +215,5 @@ rounded down the closest whole number.
 ## Resources
 
 - [Mocha documentation](http://mochajs.org/)
+
+<p data-visibility='hidden'>View <a href='https://learn.co/lessons/javascript-intro-to-mocha' title='JavaScript Intro to Mocha'>JavaScript Intro to Mocha</a> on Learn.co and start learning to code for free.</p>
