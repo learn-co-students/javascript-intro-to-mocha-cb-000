@@ -94,7 +94,7 @@ function favoriteIceCream(flavor) {
 }
 ```
 
-Then, if you open up `index.html` in your browser (if you're using the IDE, follow [these steps](https://help.learn.co/hc/en-us/articles/230234088-Viewing-HTML-pages-in-the-Learn-IDE)) and call `favoriteIceCream('chocolate')` in the browser's terminal, you can inspect the `flavor` argument simply by hovering over it. Pretty cool, right?
+Then, if you open up `index.html` in your browser (if you're using the IDE, type in `httpserver`, navigate to the IP address it spits out in the terminal, and open the `index.html` page | follow [these steps] for more info(https://help.learn.co/hc/en-us/articles/230234088-Viewing-HTML-pages-in-the-Learn-IDE)) and call `favoriteIceCream('chocolate')` in the browser's terminal, you can inspect the `flavor` argument simply by hovering over it. Pretty cool, right?
 
 ### Debugging with the browser
 
@@ -125,16 +125,6 @@ Finally, once we pass the test, we'll see
 ![test passing](https://curriculum-content.s3.amazonaws.com/skills-based-js/intro_to_mocha/intro_to_mocha_one_test_passing.png)
 
 At which point we go back to the all tests view and work on the next test.
-
-### Debugging with node-inspector
-
-As we mentioned above, we're actually running our tests in a slightly contrived environment. This setup lets us be very flexible with our approach to debugging. If you're reading this lesson locally (that is, if you aren't using the IDE), you can run `npm run debug` to launch a debugging session in your browser. This will run the tests in your terminal, letting you inspect the results as you step through the code. Note that you must use Chrome for the debugger to work.
-
-If you're using the IDE, you'll want to run `npm run debug-ide`. You'll see output like this:
-
-![ide debugger](https://curriculum-content.s3.amazonaws.com/skills-based-js/ide_debugger.png)
-
-Simply navigate to the provided URL (circled above; **your URL will look slightly different**) in Chrome on your machine, and you can debug remotely.
 
 ## Instructions
 
