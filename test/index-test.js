@@ -1,3 +1,9 @@
+global.expect = require('expect');
+
+const jsdom = require('jsdom');
+const path = require('path');
+
+ 
 describe('Intro to Mocha', function () {
   describe('theTruth()', function () {
     it('should return true', function () {
