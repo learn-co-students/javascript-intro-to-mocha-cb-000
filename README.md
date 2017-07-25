@@ -94,7 +94,7 @@ function favoriteIceCream(flavor) {
 }
 ```
 
-Then, if you open up `index.html` in your browser (if you're using the IDE, type in `httpserver`, navigate to the IP address it spits out in the terminal, and open the `index.html` page | follow [these steps] for more info(https://help.learn.co/hc/en-us/articles/230234088-Viewing-HTML-pages-in-the-Learn-IDE)) and call `favoriteIceCream('chocolate')` in the browser's terminal, you can inspect the `flavor` argument simply by hovering over it. Pretty cool, right?
+Then, if you open up `index.html` in your browser (if you're using the IDE, follow [these steps](http://help.learn.co/the-learn-ide/common-ide-questions/viewing-html-pages-in-the-learn-ide)) and call `favoriteIceCream('chocolate')` in the browser's terminal, you can inspect the `flavor` argument simply by hovering over it. Pretty cool, right?
 
 ### Debugging with the browser
 
