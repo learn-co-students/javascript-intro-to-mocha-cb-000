@@ -74,7 +74,7 @@ tests. Notice where we call `done()` inside of the callback that gets `err, wind
 
 Then we assign the location of the code we want to test to the variable `src` — pretty basic. (Don't
 worry too much about `path.resolve` — it's a part of the Node.js path library for determining the
-path of something. In this case, it's figuring out where `code.js` lives.)
+path of something. In this case, it's figuring out where `index.js` lives.)
 
 Then we compile our code. Don't worry too much about this — these days, it's not
 changing much — but know that this helps make our code run easily in multiple
