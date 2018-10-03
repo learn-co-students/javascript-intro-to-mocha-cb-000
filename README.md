@@ -53,7 +53,7 @@ The stuff at the top is all just setup — `require` is built into our test envi
 
 The first thing to notice is `done`. The `before()`, `after()`, `beforeEach()` and `afterEach()`, as well as our test functions, can have an optional first argument. This argument is a function, and is usually called `done` by convention. This signals to Mocha that what we're doing inside of `before()` runs asynchronously, and tells it to wait until we call `done()` to start running the tests. Notice where we call `done()` inside of the callback that gets `err, window` as its arguments.
 
-Then we assign the location of the code we want to test to the variable `src` — pretty basic. (Don't worry too much about `path.resolve` — it's a part of the Node.js path library for determining the path of something. In this case, it's figuring out where `code.js` lives.)
+Then we assign the location of the code we want to test to the variable `src` — pretty basic. (Don't worry too much about `path.resolve` — it's a part of the Node.js path library for determining the path of something. In this case, it's figuring out where `index.js` lives.)
 
 Then we compile our code. Don't worry too much about this — these days, it's not changing much — but know that this helps make our code run easily in multiple environments. It's pretty sweet.
 
